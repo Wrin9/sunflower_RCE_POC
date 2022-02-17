@@ -33,7 +33,6 @@ class sunflower_RCE_POC(POCBase):
             try:
                 self.timeout = 5
                 vulurl = target + "/cgi-bin/rpc"
-                # 获取hostname
                 parse = urlparse(vulurl)
                 headers = {
                     "Host": "{}".format(parse.netloc)
