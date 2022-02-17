@@ -15,7 +15,7 @@ class sunflower_RCE_POC(POCBase):
     createDate = '2022-02-15'
     updateDate = '2022-02-15'
     references = ['']
-    name = 'Shanghai Bayray Information Technology Co., Ltd. has command execution vulnerability in Sunflower Personal Edition for Windows'
+    name = 'sunflower_RCE'
     appPowerLink = ''
     appName = 'sunflower for Windows'
     appVersion = """Sunflower Personal edition for Windows <= 11.0.0.33
