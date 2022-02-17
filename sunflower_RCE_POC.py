@@ -7,21 +7,21 @@ from urllib.parse import urlparse
 from pocsuite3.api import Output, POCBase, POC_CATEGORY, register_poc, requests, VUL_TYPE
 
 
-class xrk_POC(POCBase):
+class sunflower_RCE_POC(POCBase):
     vulID = 'CNVD-2022-10270'
     version = '1.0'
     author = ['Warin9_0']
-    vulDate = '2021-03-23'
-    createDate = ''
-    updateDate = ''
+    vulDate = '2022-02-15'
+    createDate = '2022-02-15'
+    updateDate = '2022-02-15'
     references = ['']
-    name = '向日葵远控软件存在远程代码执行漏洞'
+    name = 'Shanghai Bayray Information Technology Co., Ltd. has command execution vulnerability in Sunflower Personal Edition for Windows'
     appPowerLink = ''
-    appName = '向日葵远控软件'
-    appVersion = """向日葵个人版for Windows <= 11.0.0.33
-    向日葵简约版 <= V1.0.1.43315"""
+    appName = 'sunflower for Windows'
+    appVersion = """Sunflower Personal edition for Windows <= 11.0.0.33
+    Sunflower Reduced version <= V1.0.1.43315"""
     vulType = VUL_TYPE.CODE_EXECUTION
-    desc = '''向日葵远控软件存在远程代码执行漏洞'''
+    desc = '''Shanghai Bayray Information Technology Co., Ltd. has command execution vulnerability in Sunflower Personal Edition for Windows'''
     samples = ['']
     install_requires = ['']
     category = POC_CATEGORY.EXPLOITS.WEBAPP
@@ -72,4 +72,4 @@ class xrk_POC(POCBase):
         return output
 
 
-register_poc(xrk_POC)
+register_poc(sunflower_RCE_POC)
