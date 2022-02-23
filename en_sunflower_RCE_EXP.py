@@ -64,8 +64,8 @@ class sunflower_RCE_POC(POCBase):
         p = self._check(self.url)
         if p:
             result['VerifyInfo'] = {}
-            result['VerifyInfo']['URL'] = p[0]
-            result['VerifyInfo']['Header'] = p[1]
+            #result['VerifyInfo']['URL'] = p[0]
+            #result['VerifyInfo']['Header'] = p[1]
 
         return self.parse_output(result)
 
