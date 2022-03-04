@@ -1,6 +1,9 @@
 # sunflower_RCE_POC（CNVD-2022-10270/CNVD-2022-03672）
-## 2022-03-04
-### think@f0ng
+## 2022-03-04 14:50
+### thank@f0ng
+1.bypass antivirus suite
+## 2022-03-04 12:00
+### thank@f0ng
 1. Modify the POC judgment rule
 2. Modify the EXP judgment rule
 
